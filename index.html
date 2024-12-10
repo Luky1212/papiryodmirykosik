@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Košík - PAPÍRY OD MÍRY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://github.com/Luky1212/Papiryodmiry/blob/main/Obr%C3%A1zek%20WhatsApp,%202024-12-10%20v%2019.57.10_278aec14.jpg?raw=true');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        header {
+            background-color: rgba(0, 68, 204, 0.7);
+            color: white;
+            padding: 10px 0;
+            position: relative;
+        }
+        header h1 {
+            margin: 0;
+            padding-left: 20px;
+            display: inline;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 1.2em;
+        }
+        .cart-container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: rgba(0, 68, 204, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cart-container h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            background-color: white;
+            color: black;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-item button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .cart-item button:hover {
+            background-color: darkred;
+        }
+        .contact-info {
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 68, 204, 0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PAPÍRY OD MÍRY</h1>
+        <a href="#">Home</a>
+        <a href="https://luky1212.github.io/Papir-na-miru/">About Us</a>
+        <a href="cart.html" style="font-size: 1.5em; color: white;">Košík</a>
+    </header>
+
+    <div class="cart-container">
+        <h2>Košík</h2>
+        
+        <div class="cart-items" id="cart-items">
+            <!-- Zde budou zobrazeny položky v košíku -->
+        </div>
+
+        <div class="cart-summary">
+            <p><strong>Celková cena:</strong> <span id="total-price">0 Kč</span></p>
+        </div>
+
+        <div class="contact-info">
+            <p>Pro objednání nás kontaktujte na:</p>
+            <p>📞 Telefon: +420 123 456 789</p>
+            <p>📷 Instagram: <a href="https://instagram.com/papiryodmiry" target="_blank" style="color: white;">@papiryodmiry</a></p>
+            <p>✉️ E-mail: <a href="mailto:info@papiryodmiry.cz" style="color: white;">info@papiryodmiry.cz</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 PAPÍRY OD MÍRY</p>
+    </footer>
+
+    <script>
+        // Seznam položek v košíku
+        const cart = [
+            { name: 'Papír na míru', price: 100 },
+            { name: 'Papír v rolích', price: 200 },
+            { name: 'Kancelářský papír', price: 150 }
+        ];
+
+        // Funkce pro zobrazení položek v košíku
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ''; // Vymaže existující položky
+
+            let totalPrice = 0;
+
+            cart.forEach(item => {
+                totalPrice += item.price;
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>${item.price} Kč</span>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+
+            document.getElementById('total-price').textContent = `${totalPrice} Kč`;
+        }
+
+        // Zavoláme funkci pro zobrazení položek při načtení stránky
+        window.onload = displayCartItems;
+    </script>
+</body>
+</html>
